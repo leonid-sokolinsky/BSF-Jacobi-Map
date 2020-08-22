@@ -8,6 +8,7 @@ This source code is a part of BSF Skeleton
 ==============================================================================*/
 #include "Problem-Data.h"			// Problem Types 
 #include "Problem-Forwards.h"		// Problem Function Forwards
+#include "Problem-bsfParameters.h"	// BSF-skeleton parameters
 #include "BSF-SkeletonVariables.h"	// Skeleton Variables
 using namespace std;
 
@@ -56,13 +57,6 @@ void PC_bsf_SetListSize(int* listSize) {
 
 void PC_bsf_MapF(PT_bsf_mapElem_T* mapElem, PT_bsf_reduceElem_T* reduceElem, int* success // 1 - reduceElem was produced successfully (default); 0 - otherwise
 ){
-	/*debug*//*
-	if (PP_BSF_mpiRank == 0) {
-		cout << "Node " << PP_BSF_mpiRank << ":PC_bsf_MapF: ";
-		cout << "numberInSublist = " << PP_BSF_numberInSublist;
-		cout << "\taddressOffset = " << PP_BSF_addressOffset << endl;
-	};
-	/*end debug*/
 	int mapIndex;
 #ifdef PP_BSF_FRAGMENTED_MAP_LIST
 	mapIndex = BSF_sv_numberInSublist;
@@ -81,16 +75,6 @@ void PC_bsf_MapF(PT_bsf_mapElem_T* mapElem, PT_bsf_reduceElem_T* reduceElem, int
 	else
 		for (int j = 0; j < PP_N; j++)
 			reduceElem->g[j] = PD_g[j];
-
-	/*debug*//*
-	if (rank == NODE) {
-		cout << "reduceElem->g:";
-		for (int j = 0; j < PP_N; j++)
-			cout << setw(8) << reduceElem->g[j];
-		cout << endl;
-		cout << "success=" << *success << endl;
-	};
-	/*end debug*/
 };
 
 void PC_bsf_MapF_1(PT_bsf_mapElem_T* mapElem, PT_bsf_reduceElem_T_1* reduceElem,
@@ -112,15 +96,10 @@ void PC_bsf_MapF_3(PT_bsf_mapElem_T* mapElem, PT_bsf_reduceElem_T_3* reduceElem,
 };
 
 void PC_bsf_ReduceF(PT_bsf_reduceElem_T* x, PT_bsf_reduceElem_T* y, PT_bsf_reduceElem_T* z) { // z = x + y
-	/*debug*//*
-	int rank, size; MPI_Comm_rank(MPI_COMM_WORLD, &rank); MPI_Comm_size(MPI_COMM_WORLD, &size);
-	if(rank != size-1)
-		cout << "Error: Invocating Reduce Function by worker!" << endl;
-	/*end debug*/
-
 	for (int j = 0; j < PP_N; j++)
 		z->g[j] = x->g[j] + y->g[j];
 };
+
 void PC_bsf_ReduceF_1(PT_bsf_reduceElem_T_1* x, PT_bsf_reduceElem_T_1* y, PT_bsf_reduceElem_T_1* z) {/* not used */ };
 void PC_bsf_ReduceF_2(PT_bsf_reduceElem_T_2* x, PT_bsf_reduceElem_T_2* y, PT_bsf_reduceElem_T_2* z) {/* not used */ };
 void PC_bsf_ReduceF_3(PT_bsf_reduceElem_T_3* x, PT_bsf_reduceElem_T_3* y, PT_bsf_reduceElem_T_3* z) {/* not used */ }
