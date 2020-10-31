@@ -254,18 +254,9 @@ void PC_bsf_ProblemOutput_3(PT_bsf_reduceElem_T_3* reduceResult, int reduceCount
 	// optional filling
 };
 
-void PC_bsf_SetMapSubList(PT_bsf_mapElem_T* sublist, int sublistLength, int offset) {
-	for (int i = 0; i < sublistLength; i++) 
-			sublist[i].rowNo = i + offset;
-	/*debug*//*
-	int rank; MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-	cout << rank << ":=========>PC_bsf_SetMapSubList: sublistLength = " << sublistLength << "\toffset = " << offset << endl;
-	for (int i = 0; i < sublistLength; i++)
-		cout << setw(5) << sublist[i].rowNo;
-	cout << endl;
-	/*end debug*/
-
-};
+void PC_bsf_SetMapListElem(PT_bsf_mapElem_T* elem, int i) {
+	elem->rowNo = i;
+}
 
 //----------------------- Assigning Values to BSF-skeleton Variables (Do not modify!) -----------------------
 void PC_bsfAssignAddressOffset(int value) { BSF_sv_addressOffset = value; };
