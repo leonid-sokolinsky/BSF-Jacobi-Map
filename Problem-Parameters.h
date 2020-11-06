@@ -8,11 +8,11 @@ This source code is a part of BSF Skeleton
 ==============================================================================*/
 
 //=========================== Problem Parameters =========================
-#define PP_N 3					// Dimension of space
+#define PP_N 31					// Dimension of space
 #define PP_MAX_ITER_COUNT 10
 #define PP_EPS 1E-9			// Precision
 
 
 //-------------------------- Outpoot Parameters ---------------------------
 #define PP_OUTPUT_LIMIT	11	// Number of Elements to output
-#define PP_MATRIX_OUTPUT	// Output Matrix
+//#define PP_MATRIX_OUTPUT	// Output Matrix
