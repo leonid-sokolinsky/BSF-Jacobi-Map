@@ -11,15 +11,15 @@ This source code is a part of BSF Skeleton
 
 //=========================== BSF Types =========================
 struct PT_bsf_parameter_T {			// Parameter for workers
-	double approximation[PP_N];		// Current approximation
+	PT_vector_T approximation;		// Current approximation
 };
 
-struct PT_bsf_mapElem_T {			// Element of map list
-	int rowNo;						// Row number in matrix Alpha
+struct PT_bsf_mapElem_T {		// Element of map list
+	PT_vector_T row;			// Row of reduced matrix		
 };
 
 struct PT_bsf_reduceElem_T {		// Element of reduce list	
-	double g[PP_N];					// Coordinate
+	PT_vector_T g;					// Coordinate
 };
 
 struct PT_bsf_reduceElem_T_1 {

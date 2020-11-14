@@ -11,8 +11,4 @@ This source code is a part of BSF Skeleton
 //========================== Problem variables ====================================
 static double* PD_g;
 //========================== Problem structures ====================================
-static double PD_A[PP_N][PP_N];			// Coefficients of equations
-static double PD_b[PP_N];				// Vector of right parts
-static double PD_Alpha[PP_N][PP_N];		// Reduced matrix
-static double PD_beta[PP_N];			// Reduced vector of right parts
 static double PD_prevApproximation[PP_N];// Previous approximation
